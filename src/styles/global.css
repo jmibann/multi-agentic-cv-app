@@ -1,0 +1,24 @@
+@import './tokens.css';
+@import './reset.css';
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-base-size);
+  line-height: 1.6;
+  color: var(--color-paragraph);
+  background-color: var(--color-bg);
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: var(--font-mobile-size);
+  }
+}
+
+#root {
+  min-height: 100vh;
+}

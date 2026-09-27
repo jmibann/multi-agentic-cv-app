@@ -1,0 +1,45 @@
+.section {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-20);
+  border-bottom: 5px solid #f0f0f0;
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.logo {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  min-width: 120px;
+  color: var(--color-heading);
+  font-weight: 600;
+  font-size: var(--heading-size-h4);
+  letter-spacing: 0.02em;
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+.logo img {
+  max-height: 100%;
+  width: auto;
+}

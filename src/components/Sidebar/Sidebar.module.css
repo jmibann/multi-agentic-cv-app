@@ -1,0 +1,156 @@
+.sidebar {
+  position: relative;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-20);
+  border-bottom: 5px solid #f0f0f0;
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  /* overflow visible a propósito: el avatar sobresale por arriba via margin negativo */
+}
+
+@media (min-width: 1200px) {
+  .sidebar {
+    position: sticky;
+    top: 24px;
+  }
+}
+
+.avatarWrap {
+  /* Mismo truco que el original: margin-top negativo en flujo normal
+     (no position:absolute), así el avatar "sobresale" del borde
+     superior de la tarjeta y el resto del contenido fluye debajo sin
+     matemática de padding frágil. */
+  width: 180px;
+  height: 180px;
+  margin: -90px auto 24px;
+  border-radius: var(--radius-32);
+  border: 6px solid var(--color-surface);
+  box-shadow: var(--avatar-shadow);
+  background-color: var(--color-avatar-bg);
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.avatarPlaceholder svg {
+  width: 64px;
+  height: 64px;
+}
+
+.baseInfo {
+  text-align: center;
+}
+
+.name {
+  font-size: var(--heading-size-h3);
+  font-weight: 600;
+  color: var(--color-heading);
+  margin-bottom: 14px;
+}
+
+.socialList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.socialLink {
+  display: inline-flex;
+  color: var(--color-heading);
+  opacity: 0.6;
+  transition:
+    opacity 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+.socialLink:hover {
+  color: var(--color-accent);
+  opacity: 1;
+}
+
+.socialLink svg {
+  width: 18px;
+  height: 18px;
+}
+
+.toggleBtn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+@media (max-width: 1199px) {
+  .toggleBtn {
+    display: inline-flex;
+  }
+}
+
+.additionalInfo {
+  overflow: hidden;
+}
+
+@media (max-width: 1199px) {
+  .additionalInfo {
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .additionalInfoOpen {
+    max-height: 640px;
+  }
+}
+
+.contactList {
+  margin: 0 0 24px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.contactItem:last-child {
+  margin-bottom: 0;
+}
+
+.contactInfo {
+  min-width: 0;
+  flex: 1;
+}
+
+.contactLabel {
+  display: block;
+  color: var(--color-overhead);
+  font-size: calc(var(--font-base-size) - 3px);
+  text-transform: uppercase;
+}
+
+.contactValue {
+  display: block;
+  color: var(--color-heading);
+  font-size: calc(var(--font-base-size) - 1px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

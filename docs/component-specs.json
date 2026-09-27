@@ -1,0 +1,191 @@
+{
+  "pages": ["Home (/)", "Resume (/resume/)"],
+  "extraction_methods": {
+    "Home": "Playwright multi-viewport crawl (HTML + computed styles + cssRules + screenshots). Alta fidelidad.",
+    "Resume": "Actualizado con extracción completa vía Playwright (HTML + computed styles + cssRules + screenshots, 8 viewports), igual que Home. Ya pixel-matched — reemplaza la primera pasada que se había hecho solo con web_fetch de contenido."
+  },
+  "layout_tree": [
+    "Layout (container 1290px, padding 160px/12px/60px)",
+    "  └─ Row (flex, gutter 24px, colapsa <1200px)",
+    "      ├─ Sidebar (col-xl-3, sticky)",
+    "      │   ├─ AvatarCircle",
+    "      │   ├─ Name (title--h3) + Badge (rol)",
+    "      │   ├─ SocialLinks (facebook, x, instagram)",
+    "      │   ├─ ToggleButton 'Show Contacts' (solo <1200px)",
+    "      │   ├─ Divider",
+    "      │   ├─ ContactList (email, phone, whatsapp, location)",
+    "      │   ├─ Button 'Download CV'",
+    "      │   └─ Divider (solo <1200px)",
+    "      └─ Content (col-xl-9)",
+    "          ├─ NavMenu (hamburger + overlay off-canvas: About/Resume/Portfolio/Blog/Contact)",
+    "          ├─ SectionTitle 'About Me' (title--h1 + underline)",
+    "          ├─ AboutMe (2 párrafos)",
+    "          ├─ SectionTitle 'What I'm Doing'",
+    "          ├─ ServicesGrid (4 ServiceCard en grid 2x2)",
+    "          ├─ SectionTitle 'Testimonials'",
+    "          ├─ Testimonials (carrusel de TestimonialCard con avatar hexagonal)",
+    "          ├─ SectionTitle 'Clients'",
+    "          └─ Clients (carrusel de logos)",
+    "Resume page (misma Layout/Sidebar/NavMenu, cambia el contenido de Content):",
+    "      └─ Content (col-xl-9)",
+    "          ├─ NavMenu",
+    "          └─ Card ÚNICA (confirmado: es 1 solo .box-outer para toda la página, no una card por sección como en Home)",
+    "              ├─ SectionTitle 'Resume' (h1, underline)",
+    "              ├─ SectionTitle 'Education' (h2, icono BookOpen, SIN underline) + Timeline (3 items)",
+    "              ├─ SectionTitle 'Experience' (h2, icono Briefcase, SIN underline) + Timeline (3 items)",
+    "              └─ Fila flex 2 columnas (gap 40px, colapsa a 1 columna <768px)",
+    "                  ├─ SectionTitle 'Design Skills' (h2 plano, sin icono/underline) + SkillsSection (4 barras)",
+    "                  └─ SectionTitle 'Coding Skills' (h2 plano, sin icono/underline) + SkillsSection (4 barras)"
+  ],
+  "components": {
+    "Sidebar": {
+      "root_class_ref": ".sidebar.box-outer",
+      "props": ["name", "role", "avatarSrc", "socialLinks[]", "contactItems[]", "cvUrl"],
+      "notes": "En desktop (>=1200px) es sticky en el viewport mientras se hace scroll del contenido. En breakpoints menores se colapsa a ancho completo arriba del contenido, y el bloque de contacto se oculta detrás de un botón 'Show Contacts'."
+    },
+    "AvatarCircle": {
+      "size": "180px",
+      "border_radius": "32px",
+      "border": "6px solid #fff",
+      "box_shadow": "0 8px 24px rgba(4,15,21,0.05)",
+      "negative_margin_top": "-128px (se monta sobre el header decorativo)"
+    },
+    "Badge": {
+      "bg": "#f5f7fa",
+      "text_color": "inherit",
+      "padding": "8px 16px",
+      "radius": "8px",
+      "font_size": "13px"
+    },
+    "SocialLinks": {
+      "icon_size": "18px",
+      "color": "#3b4b5e (opacity 0.6)",
+      "hover_color": "#304cfd (opacity 1)",
+      "spacing": "0 6px por ícono",
+      "icon_map_lucide": {
+        "facebook": "Facebook",
+        "x/twitter": "Twitter",
+        "instagram": "Instagram"
+      }
+    },
+    "ContactList": {
+      "item_layout": "icon-box (48px, radius 12px, bg #f5f7fa) + label 'overhead' (12px uppercase, #637085) + valor (14px, #3b4b5e)",
+      "items_detectados": [
+        { "label": "Email", "icon_lucide": "Mail" },
+        { "label": "Phone", "icon_lucide": "Phone" },
+        { "label": "WhatsApp", "icon_lucide": "MessageCircle" },
+        { "label": "Location", "icon_lucide": "MapPin" }
+      ]
+    },
+    "Button": {
+      "variants": ["primary (default)", "small"],
+      "primary": {
+        "padding": "15px 32px 14px",
+        "radius": "20px",
+        "bg": "gradient accent",
+        "text": "#fff"
+      },
+      "small": { "padding": "10px 16px", "font_size": "12px" },
+      "icon_position": "left | right (según prop)"
+    },
+    "NavMenu": {
+      "trigger": "botón hamburguesa circular, 60x60px, ícono 'Menu' de lucide, fondo = gradient accent",
+      "panel": "overlay fullscreen rgba(20,25,31,0.8) + lista de links centrada, animación de entrada deslizando desde la derecha",
+      "links_detectados": ["About", "Resume", "Portfolio", "Blog", "Contact"],
+      "close_icon_lucide": "X"
+    },
+    "SectionTitle": {
+      "tag": "h1 para el primer título de la página, h2 para el resto (jerarquía semántica); visualmente todas usan el tamaño h1/h2 del tema",
+      "underline": "barra de 40x5px, radius 8px, bg gradient accent, 17px debajo del texto"
+    },
+    "ServiceCard": {
+      "root_class_ref": ".case-item.box.box-inner",
+      "bg": "#f5f7fa",
+      "radius": "16px",
+      "padding": "30px",
+      "icon_size": "40x40px",
+      "layout": "icono a la izquierda (margin-right 16px), título (h3, 18px) + descripción debajo",
+      "grid": "2 columnas en desktop/tablet, 1 columna en mobile",
+      "items_detectados": [
+        { "title": "Web Design", "icon_lucide": "PenTool" },
+        { "title": "Web Development", "icon_lucide": "Code2" },
+        { "title": "Mobile Apps", "icon_lucide": "Smartphone" },
+        { "title": "Photography", "icon_lucide": "Camera" }
+      ]
+    },
+    "TestimonialCard": {
+      "root_class_ref": ".review-item.box.box-inner",
+      "bg": "#f5f7fa",
+      "radius": "16px",
+      "padding": "30px 30px 24px",
+      "avatar_shape": "hexágono (clip-path), 80x88px contenedor externo, 72x80px imagen interna",
+      "quote_icon": "esquina superior derecha, color accent, ícono 'Quote' de lucide",
+      "carousel": "swiper en el original; se reimplementa como carrusel simple con scroll-snap + dots, sin dependencia externa"
+    },
+    "Clients": {
+      "root_class_ref": ".clients-section .logo-client",
+      "opacity_default": 0.6,
+      "opacity_hover": 1,
+      "gap": "80px",
+      "carousel": "mismo criterio que TestimonialCard: scroll-snap + dots"
+    },
+    "Timeline": {
+      "root_class_ref": ".timeline / .timeline__item (widget 'vcard-widget-timeline')",
+      "used_in": ["Education", "Experience"],
+      "container": "margin-top: 29px; padding-left: 24px; position: relative",
+      "connector": ".timeline::before — conecta el icon-box del título con el primer item: 1px solid var(--color-border), 60px alto, 30px arriba del container",
+      "item": "border-left: 1px solid var(--color-border) (así se dibuja la línea — no es un div aparte); padding-left: 40px; padding-bottom: 9px; last-child sin border-left",
+      "dot": "::before del item — 9x9px, radius 50%, bg var(--color-accent), box-shadow 0 0 0 4px var(--color-border), top:1px, left:-5px",
+      "title": "h5.title--h4 (16px/500) con position:relative;top:-5px para alinear con el dot; margin-bottom:0",
+      "period": "color var(--color-overhead), font-size -2px",
+      "description": "margin-top: 4px",
+      "icon_map_lucide": { "Education": "BookOpen", "Experience": "Briefcase" },
+      "items_detectados": {
+        "Education": [
+          { "title": "University School of the Arts", "period": "2007 — 2009" },
+          { "title": "New York Academy of Art", "period": "2005 — 2007" },
+          { "title": "High School of Art and Design", "period": "2003 — 2005" }
+        ],
+        "Experience": [
+          { "title": "Creative Director", "period": "2015 — Present" },
+          { "title": "Art Director", "period": "2013 — 2015" },
+          { "title": "Web Designer", "period": "2010 — 2013" }
+        ]
+      },
+      "nota_contenido": "Los párrafos genéricos del demo original no se copiaron literal — se reemplazaron por placeholders en español para que el usuario los complete con su propia experiencia."
+    },
+    "SkillsSection": {
+      "root_class_ref": ".skills-section .progress (widget 'vcard-widget-skills')",
+      "used_in": ["Design Skills", "Coding Skills"],
+      "tecnica": "El nombre+porcentaje se pinta DOS VECES superpuesto: una copia de fondo (solo el nombre, texto oscuro var(--color-heading)) sobre el track gris entero, y una copia adentro del div de relleno (nombre+porcentaje, texto blanco) que tiene overflow:hidden y width animado al %, por lo que se recorta exactamente en el borde del relleno — así el número queda 'flotando' justo donde termina el color.",
+      "track": ".progress — height 24px, border-radius var(--radius-16), bg var(--color-border), margin-bottom 24px",
+      "fill": ".progress-bar__value — height 24px, border-radius var(--radius-16), bg var(--color-gradient), width: 0%→N% (transition 0.6s ease-in-out), overflow hidden",
+      "text_row": "flex, justify-content space-between, padding 0 13px, position absolute inset:0",
+      "items_detectados": {
+        "Design Skills": [
+          { "name": "Web Design", "percentage": 80 },
+          { "name": "Graphic Design", "percentage": 75 },
+          { "name": "Branding", "percentage": 90 },
+          { "name": "WordPress", "percentage": 100 }
+        ],
+        "Coding Skills": [
+          { "name": "WordPress", "percentage": 100 },
+          { "name": "Javascript", "percentage": 80 },
+          { "name": "HTML", "percentage": 90 },
+          { "name": "PHP", "percentage": 30 }
+        ]
+      }
+    },
+    "SectionTitle_variantes": {
+      "con_underline": "Resume, About Me, What I'm Doing, Testimonials, Clients — .title__separate",
+      "sin_underline_con_icono": "Education, Experience — .icon-box (48px, radius-12, bg var(--color-surface-muted)) + h2, SIN .title__separate",
+      "sin_underline_sin_icono": "Design Skills, Coding Skills — h2 plano de Elementor (elementor-heading-title), hereda el h2 global del tema (24px/600) pero sin ninguna decoración custom"
+    }
+  },
+  "recreation_decisions": {
+    "swiper_js": "El tema original usa Swiper.js para los carruseles. Para mantener el bundle liviano y sin dependencias pesadas, se reimplementa con un componente Carousel propio (scroll-snap nativo + botones/dots controlados por estado de React). Si se prefiere paridad 1:1 con el original, se puede sustituir por 'swiper' (paquete npm) sin cambiar el resto de la arquitectura.",
+    "icon_fonts": "El original usa Font Awesome + Feather icon font + un icomoon custom. Se reemplaza todo por 'lucide-react' (mismo espíritu visual que Feather, tree-shakeable, tipado, sin @font-face que cargar).",
+    "decorative_background": "Los triángulos de fondo decorativos (rojo/naranja/turquesa) son puramente estéticos y no aportan a la lectura del CV. Se reimplementan de forma simplificada con formas CSS (clip-path) en App.module.css; no son pixel-perfect con el original pero mantienen la paleta y el gesto visual.",
+    "routing": "El original es un sitio WordPress multi-página (About/Resume/Portfolio/Blog/Contact son URLs distintas). Acá se agregó 'react-router-dom' con un Layout persistente (Sidebar + NavMenu) y rutas '/' (Home) y '/resume'. Portfolio/Blog/Contact quedan como rutas placeholder ('Próximamente') para que el NavMenu no rompa — construirlas es el siguiente paso natural si se necesitan."
+  }
+}

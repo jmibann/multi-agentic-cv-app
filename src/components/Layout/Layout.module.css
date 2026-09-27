@@ -1,0 +1,86 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+.shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.shapeTopLeft {
+  top: -40px;
+  left: -40px;
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(135deg, #e0483e 0%, #f2994a 100%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.shapeTopRight {
+  top: 0;
+  right: 0;
+  width: 160px;
+  height: 160px;
+  background: #17c3b2;
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+}
+
+.shapeBottomRight {
+  bottom: -30px;
+  right: -30px;
+  width: 260px;
+  height: 260px;
+  background: linear-gradient(135deg, #17c3b2 0%, #304cfd 100%);
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 96px 12px 60px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding-top: 160px;
+  }
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gutter);
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.sidebarColumn {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 1200px) {
+  .sidebarColumn {
+    flex: 0 0 300px;
+  }
+}
+
+.contentColumn {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

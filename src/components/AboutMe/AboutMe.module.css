@@ -1,0 +1,17 @@
+.section {
+  position: relative;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-20);
+  border-bottom: 5px solid #f0f0f0;
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+}
+
+.paragraph {
+  color: var(--color-paragraph);
+  margin-bottom: 16px;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}

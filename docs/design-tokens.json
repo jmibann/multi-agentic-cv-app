@@ -1,0 +1,211 @@
+{
+  "$schema": "design-tokens-v1",
+  "source": {
+    "theme": "vCard 2 Light (ThemeForest / art-template.ru)",
+    "url": "https://art-template.ru/themes/vcard-2-light/",
+    "extractedAt": "2026-09-27T17:32:49.366Z",
+    "extractionMethod": "Playwright multi-viewport crawl (8 viewports: mobile-375/390/414, tablet-768, desktop-1024/1280/1440/1920)",
+    "note": "Valores tomados de las CSS custom properties reales del sitio (:root) y de los computed styles capturados por Playwright, no estimados a ojo."
+  },
+  "pages_covered": {
+    "home": "Extracción completa vía Playwright (HTML + computed styles + cssRules + screenshots).",
+    "resume": "Extracción completa vía Playwright, igual que Home (misma técnica, 8 viewports). Mismos tokens; se documentan por separado en component-specs.json los componentes nuevos que aparecen acá (Timeline, SkillsSection)."
+  },
+  "design_tokens": {
+    "colors": {
+      "accent": {
+        "value": "#304cfd",
+        "role": "call_to_action, links, icons activos",
+        "confidence": "high"
+      },
+      "gradient": {
+        "value": "linear-gradient(137.84deg, #304cfd 26.31%, #304cfd 93.75%)",
+        "role": "fondo de botones primarios (visualmente sólido, definido como gradiente en el tema original)",
+        "confidence": "high"
+      },
+      "background": { "value": "#eceef4", "role": "fondo de página (body)", "confidence": "high" },
+      "surface": {
+        "value": "#ffffff",
+        "role": "fondo de tarjetas/paneles principales (box-outer)",
+        "confidence": "high"
+      },
+      "surfaceMuted": {
+        "value": "#f5f7fa",
+        "role": "fondo de sub-tarjetas, badges, icon-box (grey-100)",
+        "confidence": "high"
+      },
+      "border": {
+        "value": "#e3e5e8",
+        "role": "bordes y separadores (grey-200)",
+        "confidence": "high"
+      },
+      "heading": { "value": "#3b4b5e", "role": "texto principal / títulos", "confidence": "high" },
+      "paragraph": {
+        "value": "#3b4b5e",
+        "role": "texto de párrafo (mismo valor que heading en este tema)",
+        "confidence": "high"
+      },
+      "overhead": {
+        "value": "#637085",
+        "role": "labels secundarios en mayúsculas (EMAIL, PHONE, etc.)",
+        "confidence": "high"
+      },
+      "error": { "value": "#b84c4c", "role": "estados de error", "confidence": "medium" },
+      "sticky": {
+        "value": "#db503e",
+        "role": "badges destacados (ribbon 'sticky')",
+        "confidence": "medium"
+      },
+      "avatarBg": {
+        "value": "#f5f8f9",
+        "role": "fondo detrás del avatar circular mientras carga",
+        "confidence": "medium"
+      }
+    },
+    "typography": {
+      "font_family": { "value": "'Poppins', sans-serif", "weights_detected": [300, 400, 500, 600] },
+      "base_size": { "desktop": "15px", "mobile": "14px" },
+      "heading_scale": {
+        "h1": { "desktop": "32px", "mobile": "24px", "margin_bottom": "17px" },
+        "h2": { "desktop": "24px", "mobile": "18px", "margin_bottom": "20px" },
+        "h3": { "desktop": "18px", "mobile": "16px", "margin_bottom": "8px" },
+        "h4": { "desktop": "16px", "mobile": "14px", "margin_bottom": "13px", "font_weight": 500 },
+        "h5": { "desktop": "14px", "mobile": "12px" },
+        "h6": { "desktop": "12px", "mobile": "10px" }
+      },
+      "body_line_height": 1.6,
+      "overhead_label": { "font_size": "12px", "text_transform": "uppercase", "font_weight": 400 }
+    },
+    "spacing": {
+      "base_unit": "8px",
+      "container_max_width": "1290px",
+      "container_padding": {
+        "top": "160px",
+        "x": "12px",
+        "bottom": "60px",
+        "note": "top grande porque el diseño original reserva espacio para el fondo decorativo con triángulos"
+      },
+      "grid_gutter": "24px",
+      "card_padding": "30px",
+      "sidebar_breakpoint": "1200px (col-xl-3 / col-xl-9; por debajo, la sidebar pasa a ancho completo apilada)"
+    },
+    "radii": {
+      "radius_8": "8px",
+      "radius_12": "12px",
+      "radius_14": "14px",
+      "radius_16": "16px",
+      "radius_18": "18px",
+      "radius_20": "20px",
+      "radius_32": "32px"
+    },
+    "shadows": {
+      "btn_shadow": "0 8px 16px rgba(48,76,253,0.15), 0 2px 4px rgba(48,76,253,0.15)",
+      "btn_focus_shadow": "0 24px 40px rgba(48,76,253,0.1), 0 8px 16px rgba(48,76,253,0.1)",
+      "card_shadow": "0 40px 50px rgba(4,15,21,0.09)",
+      "avatar_shadow": "0 8px 24px rgba(4,15,21,0.05)",
+      "elevated_shadow": "0px 16px 30px rgba(0,0,0,0.25)"
+    },
+    "breakpoints": {
+      "sm": "576px",
+      "md": "768px",
+      "lg": "992px",
+      "xl": "1200px",
+      "xxl": "1400px",
+      "note": "Escala estándar de Bootstrap 5, confirmada en las media queries del sitio original"
+    }
+  },
+  "components": {
+    "button": {
+      "base": {
+        "background": "var(--color-gradient)",
+        "color": "#ffffff",
+        "border": "none",
+        "border_radius": "var(--radius-20)",
+        "padding": "15px 32px 14px",
+        "font_size": "16px",
+        "box_shadow": "var(--btn-shadow)",
+        "hover_state": "opacity: 0.9; box-shadow: none"
+      },
+      "small_variant": {
+        "padding": "10px 16px",
+        "font_size": "12px",
+        "box_shadow": "var(--btn-shadow)"
+      }
+    },
+    "badge": {
+      "bg": "var(--color-surface-muted)",
+      "text": "inherit (color-heading)",
+      "padding": "8px 16px",
+      "radius": "var(--radius-8)",
+      "font_size": "13px",
+      "font_weight": 400
+    },
+    "card_outer": {
+      "bg": "var(--color-surface)",
+      "radius": "var(--radius-20)",
+      "padding": "30px",
+      "border_bottom": "5px solid #f0f0f0",
+      "shadow": "var(--card-shadow)"
+    },
+    "card_inner": {
+      "bg": "var(--color-surface-muted)",
+      "radius": "var(--radius-16)",
+      "padding": "30px",
+      "margin_bottom": "30px"
+    },
+    "icon_box": {
+      "size": "48px",
+      "radius": "var(--radius-12)",
+      "bg": "var(--color-surface-muted)",
+      "icon_size": "18px",
+      "hover_state": "none"
+    },
+    "avatar_circle": {
+      "size": "180px",
+      "radius": "var(--radius-32)",
+      "border": "6px solid var(--color-surface)",
+      "shadow": "var(--avatar-shadow)",
+      "bg": "var(--color-avatar-bg)"
+    },
+    "avatar_hexagon": {
+      "outer_size": "80px x 88px",
+      "inner_size": "72px x 80px",
+      "shape": "clip-path hexagon (ver component-specs.json para el path SVG completo)",
+      "used_in": "testimonial cards"
+    },
+    "data_table": {
+      "note": "no presente en la vista extraída (home de vCard); si se agrega una tabla de skills/experiencia, reusar header_bg = var(--color-surface-muted), row_border = 1px solid var(--color-border), cell_padding = 16px, has_zebra_striping = false para mantener coherencia visual"
+    },
+    "carousel": {
+      "navigation": "dots (pagination)",
+      "card_gap": "30px (testimonios) / 80px (logos de clientes)",
+      "card_border_radius": "var(--radius-16)",
+      "edge_fade_effect": false,
+      "used_in": ["testimonials", "clients"]
+    },
+    "section_title_underline": {
+      "bar_width": "40px",
+      "bar_height": "5px",
+      "bar_radius": "8px",
+      "bar_bg": "var(--color-gradient)",
+      "offset_below_text": "17px"
+    },
+    "divider": {
+      "bg": "var(--color-border)",
+      "height": "1px",
+      "bleed": "extiende 30px más allá del padding del contenedor a cada lado"
+    },
+    "nav_overlay": {
+      "bg": "rgba(20,25,31,0.8)",
+      "position": "fixed fullscreen",
+      "link_color": "rgba(255,255,255,0.7)",
+      "link_color_hover": "#ffffff"
+    }
+  },
+  "layout": {
+    "grid_system": "flexbox de 2 columnas (sidebar fija + contenido), colapsa a 1 columna por debajo de 1200px",
+    "sidebar_width": "25% (col-xl-3) con position: sticky en desktop",
+    "content_width": "75% (col-xl-9)",
+    "breakpoints_inferred": "576 / 768 / 992 / 1200 / 1400 (Bootstrap 5 estándar)"
+  }
+}

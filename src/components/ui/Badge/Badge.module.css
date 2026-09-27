@@ -1,0 +1,10 @@
+.badge {
+  display: inline-block;
+  background-color: var(--color-surface-muted);
+  color: inherit;
+  padding: 8px 16px;
+  border-radius: var(--radius-8);
+  font-size: calc(var(--font-base-size) - 2px);
+  font-weight: 400;
+  line-height: 1.3;
+}

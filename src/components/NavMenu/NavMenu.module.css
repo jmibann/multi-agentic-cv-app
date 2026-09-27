@@ -1,0 +1,85 @@
+.trigger {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-gradient);
+  color: #ffffff;
+  box-shadow: var(--btn-shadow);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.trigger:hover {
+  opacity: 0.9;
+}
+
+.trigger svg {
+  width: 22px;
+  height: 22px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background-color: rgba(20, 25, 31, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.overlayOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.link {
+  display: block;
+  padding: 12px 24px;
+  border-radius: var(--radius-8);
+  font-size: var(--heading-size-h3);
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #ffffff;
+}
+
+.linkActive {
+  color: #ffffff;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.closeBtn svg {
+  width: 22px;
+  height: 22px;
+}

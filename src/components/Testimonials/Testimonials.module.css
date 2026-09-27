@@ -1,0 +1,116 @@
+.section {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-20);
+  border-bottom: 5px solid #f0f0f0;
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-top: 44px; /* deja lugar al avatar hexagonal que sobresale */
+  margin-top: -20px;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 min(340px, 85%);
+  scroll-snap-align: start;
+  background-color: var(--color-surface-muted);
+  border-radius: var(--radius-16);
+  padding: 30px 30px 24px;
+}
+
+.quoteIcon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.quoteIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.avatarHex {
+  position: absolute;
+  top: -44px;
+  left: 30px;
+  width: 72px;
+  height: 72px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(4, 15, 21, 0.15);
+}
+
+.avatarHex img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.avatarPlaceholder svg {
+  width: 28px;
+  height: 28px;
+}
+
+.name {
+  margin-top: 40px;
+  font-size: var(--heading-size-h3);
+  font-weight: 600;
+  color: var(--color-heading);
+  margin-bottom: 4px;
+}
+
+.date {
+  display: block;
+  color: var(--color-overhead);
+  font-size: calc(var(--font-base-size) - 2px);
+  margin-bottom: 12px;
+}
+
+.quote {
+  color: var(--color-paragraph);
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  transition:
+    background-color 0.2s ease-in-out,
+    width 0.2s ease-in-out;
+}
+
+.dotActive {
+  width: 20px;
+  border-radius: 4px;
+  background-color: var(--color-accent);
+}

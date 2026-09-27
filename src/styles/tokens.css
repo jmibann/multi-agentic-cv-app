@@ -1,0 +1,68 @@
+/**
+ * Design tokens extraídos de la fuente (ver /docs/design-tokens.json).
+ * Todo el resto del proyecto consume SOLO estas variables: si mañana
+ * cambia la identidad visual, se edita únicamente este archivo.
+ */
+:root {
+  /* Colores */
+  --color-accent: #304cfd;
+  --color-gradient: linear-gradient(137.84deg, #304cfd 26.31%, #2a3fe0 93.75%);
+  --color-bg: #eceef4;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f5f7fa;
+  --color-border: #e3e5e8;
+  --color-heading: #3b4b5e;
+  --color-paragraph: #3b4b5e;
+  --color-overhead: #637085;
+  --color-error: #b84c4c;
+  --color-sticky: #db503e;
+  --color-avatar-bg: #f5f8f9;
+
+  /* Tipografía */
+  --font-family: 'Poppins', system-ui, sans-serif;
+  --font-base-size: 15px;
+  --font-mobile-size: 14px;
+
+  --heading-size-h1: 32px;
+  --heading-size-h2: 24px;
+  --heading-size-h3: 18px;
+  --heading-size-h4: 16px;
+  --heading-size-h5: 14px;
+  --heading-size-h6: 12px;
+
+  --heading-mobile-h1: 24px;
+  --heading-mobile-h2: 18px;
+  --heading-mobile-h3: 16px;
+  --heading-mobile-h4: 14px;
+  --heading-mobile-h5: 12px;
+  --heading-mobile-h6: 10px;
+
+  /* Espaciado */
+  --space-unit: 8px;
+  --container-max-width: 1290px;
+  --container-padding-x: 12px;
+  --grid-gutter: 24px;
+  --card-padding: 30px;
+
+  /* Radios */
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-16: 16px;
+  --radius-18: 18px;
+  --radius-20: 20px;
+  --radius-32: 32px;
+
+  /* Sombras */
+  --btn-shadow: 0 8px 16px rgba(48, 76, 253, 0.15), 0 2px 4px rgba(48, 76, 253, 0.15);
+  --btn-focus-shadow: 0 24px 40px rgba(48, 76, 253, 0.1), 0 8px 16px rgba(48, 76, 253, 0.1);
+  --card-shadow: 0 40px 50px rgba(4, 15, 21, 0.09);
+  --avatar-shadow: 0 8px 24px rgba(4, 15, 21, 0.05);
+
+  /* Breakpoints (documentales; usados en los .module.css como valores literales) */
+  --bp-sm: 576px;
+  --bp-md: 768px;
+  --bp-lg: 992px;
+  --bp-xl: 1200px;
+  --bp-xxl: 1400px;
+}
